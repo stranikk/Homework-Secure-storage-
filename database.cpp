@@ -3,6 +3,8 @@
 #include "QtSql/QSqlDatabase"
 #include "QSqlQuery"
 #include <QDebug>
+#include <QByteArray>
+#include <QCryptographicHash>
 DataBase::DataBase(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DataBase)
@@ -66,10 +68,11 @@ bool DataBase::checkLogPas(QString EntLog,QString EntPas)
     connectDatabase();
     QSqlQuery query;
     query.exec("SELECT id, Firstname, LastName, Login, Password FROM Registration");
+    QByteArray ba=EntPas.toUtf8();
     while (query.next()){
         login=query.value(3).toString();
         password=query.value(4).toString();
-        if ((EntLog==login)&&(EntPas==password)){
+        if ((EntLog==login)&&((QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex())==password)){
             return true;
         }
         else {

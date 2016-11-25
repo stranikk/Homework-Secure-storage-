@@ -3,6 +3,8 @@
 #include "ui_reg.h"
 #include <QString>
 #include <QDebug>
+#include <QByteArray>
+#include <QCryptographicHash>
 Reg::Reg(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Reg)
@@ -28,8 +30,9 @@ void Reg::on_pushButton_clicked()
     QString fname=ui->lineEdit_4->text();
     QString lname=ui->lineEdit_5->text();
 
+    QByteArray ba=pas.toUtf8();
     if(pas==rpas){
-        db->insertIntoTable((db->setid())+1,fname,lname,log,pas);
+        db->insertIntoTable((db->setid())+1,fname,lname,log,QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex());
         this->hide();
     }
     else{

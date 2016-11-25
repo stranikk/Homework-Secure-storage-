@@ -18,7 +18,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    this->hide();
     sReg = new Reg();
     sReg->show();
 }
