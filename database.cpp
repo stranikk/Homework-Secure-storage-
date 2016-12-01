@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QByteArray>
 #include <QCryptographicHash>
+
 DataBase::DataBase(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DataBase)
@@ -15,10 +16,12 @@ DataBase::DataBase(QWidget *parent) :
 DataBase::~DataBase()
 {
     delete ui;
+
 }
 
 void DataBase::on_pushButton_clicked()
 {
+
     connectDatabase();
    //Осуществляем запрос
    QSqlQuery query;
@@ -52,7 +55,7 @@ int DataBase::setid()
     int id;
     connectDatabase();
     QSqlQuery query;
-    query.exec("SELECT id FROM Registration");
+    query.exec("SELECT id, Firstname, LastName, Login, Password FROM Registration");
     while (query.next()){
         id=query.value(0).toInt();
     }
@@ -82,7 +85,37 @@ bool DataBase::checkLogPas(QString EntLog,QString EntPas)
 
 }
 
+QString DataBase::getFname(QString log)
+{
+    QString login,Fname;
+    connectDatabase();
+    QSqlQuery query;
+    query.exec("SELECT id, Firstname, LastName, Login, Password FROM Registration");
+    while (query.next()){
+        login=query.value(3).toString();
+        Fname=query.value(1).toString();
+        if (log==login){
+            return Fname;
+        }
 
+    }
+}
+
+QString DataBase::getLname(QString log)
+{
+    QString login,Lname;
+    connectDatabase();
+    QSqlQuery query;
+    query.exec("SELECT id, Firstname, LastName, Login, Password FROM Registration");
+    while (query.next()){
+        login=query.value(3).toString();
+        Lname=query.value(2).toString();
+        if (log==login){
+            return Lname;
+        }
+
+    }
+}
 void DataBase::insertIntoTable(int id, QString Fname, QString LName, QString Login, QString Password)
 {
     connectDatabase();

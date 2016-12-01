@@ -10,21 +10,25 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Homework
 TEMPLATE = app
 
+#LIBS += -L/usr/local/Cellar/qca/2.1.1/lib/qca-qt5.framework/Versions/2.1.1/ -lQtCrypto
+#INCLUDEPATH += /usr/local/Cellar/qca/2.1.1/lib/qca-qt5.framework/Versions/2.1.1/Headers/QtCrypto
+#CONFIG += crypto
 
 SOURCES += main.cpp\
         mainwindow.cpp \
     reg.cpp \
     maincontent.cpp \
-    database.cpp
+    database.cpp \
+    crypt.cpp
 
 HEADERS  += mainwindow.h \
     reg.h \
     maincontent.h \
-    database.h
+    database.h \
+    crypt.h
 
 FORMS    += mainwindow.ui \
     reg.ui \
     maincontent.ui \
     database.ui
-
-RESOURCES +=
+LIBS += /usr/local/lib/libbotan-1.11.33.33.dylib

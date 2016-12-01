@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>754</width>
-    <height>409</height>
+    <height>426</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -184,7 +184,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -202,7 +202,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -216,16 +216,6 @@
      <y>110</y>
      <width>351</width>
      <height>121</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QListView" name="listView">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>260</y>
-     <width>351</width>
-     <height>111</height>
     </rect>
    </property>
   </widget>
@@ -253,6 +243,34 @@
    </property>
    <property name="text">
     <string>Decoder information</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>370</y>
+     <width>311</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Sign out</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>260</y>
+     <width>351</width>
+     <height>151</height>
+    </rect>
    </property>
   </widget>
  </widget>
