@@ -35,8 +35,7 @@ void MainWindow::on_pushButton_clicked()
     QString Log,Pas;
 
     Log=ui->lineEdit->text();
-    Pas=ui->lineEdit_2->text();
-    if(db->checkLogPas(Log,Pas)==true){
+    if(db->checkLogPas(Log,str)==true){
         pContent = new MainContent();
         pContent->show();
         pContent->setFnameLname(Log);
@@ -49,12 +48,21 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_lineEdit_2_textChanged(const QString &arg1)
 {
-    int itcoutn=arg1.length();
-    QString arg2 = arg1;
-    str += arg2.remove("[a-z]");
+    if(sTextchanged){
+        int itcoutn=arg1.length();
+        QString arg2 = arg1;
+        QString arg3 = arg1;
+        if(str.size() == itcoutn+1){
+            str.resize(str.size()-1);
+        }
+        else str += arg2.remove("*");
 
-    arg2.replace(QRegularExpression("."), "*");
-    //ui->lineEdit_2->setText(arg2);
+        arg3.replace(QRegularExpression("."), "*");
+        sTextchanged = false;
+        ui->lineEdit_2->setText(arg3);
+    }
+    sTextchanged = true;
+
 }
 
 

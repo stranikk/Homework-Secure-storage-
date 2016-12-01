@@ -41,6 +41,7 @@ private:
     DataBase *db;
     MainContent *pContent;
     QString str;
+    bool sTextchanged = true;
 
 };
 
