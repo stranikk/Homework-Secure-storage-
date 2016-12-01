@@ -50,19 +50,6 @@ void DataBase::connectDatabase()
    }
 }
 
-int DataBase::setid()
-{
-    int id;
-    connectDatabase();
-    QSqlQuery query;
-    query.exec("SELECT id, Firstname, LastName, Login, Password FROM Registration");
-    while (query.next()){
-        id=query.value(0).toInt();
-    }
-    return id;
-}
-
-
 
 bool DataBase::checkLogPas(QString EntLog,QString EntPas)
 {

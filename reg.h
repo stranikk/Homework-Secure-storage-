@@ -23,6 +23,7 @@ private slots:
 private:
     Ui::Reg *ui;
     DataBase *db;
+    int id;
 
 };
 

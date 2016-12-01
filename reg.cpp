@@ -10,7 +10,7 @@ Reg::Reg(QWidget *parent) :
     ui(new Ui::Reg)
 {
     ui->setupUi(this);
-
+    id=0;
 }
 
 Reg::~Reg()
@@ -29,10 +29,11 @@ void Reg::on_pushButton_clicked()
     QString rpas=ui->lineEdit_3->text();
     QString fname=ui->lineEdit_4->text();
     QString lname=ui->lineEdit_5->text();
-
     QByteArray ba=pas.toUtf8();
+
     if(pas==rpas){
-        db->insertIntoTable((db->setid())+1,fname,lname,log,QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex());
+        id=id+1;
+        db->insertIntoTable(id,fname,lname,log,QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex());
         this->hide();
     }
     else{

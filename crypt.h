@@ -14,7 +14,9 @@ class Crypt
 //Q_OBJECT
 public:
     Crypt();
-    std::string myCrypt(std::string text, std::string log, std::string pas);
+    std::string myCrypt(std::string text, std::string log, std::string pas, bool mode);
+private:
+
 };
 
 #endif // CRYPT_H

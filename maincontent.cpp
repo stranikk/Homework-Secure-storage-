@@ -3,6 +3,9 @@
 #include "mainwindow.h"
 #include <QDebug>
 #include <string>
+#include <QFileDialog>
+#include <QFile>
+#include <QByteArray>
 MainContent::MainContent(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MainContent)
@@ -34,10 +37,35 @@ void MainContent::on_pushButton_clicked()
     text=ui->lineEdit->text();
 
     //qDebug()<<
-    std::string stdstr= cr->myCrypt(text.toStdString(),"abababababababab","babababababababa");
+    std::string stdstr= cr->myCrypt(text.toStdString(),"abababababababab","babababababababa",true);
 
     QString str(stdstr.c_str());
-    qDebug()<< str;
+
+    QString fileName=QFileDialog::getSaveFileName(this,tr("Save File"),
+                                                  "/Users/nikitakurganov/Documents/Qt/Files/untitled.txt",
+                                                  tr("Text files (*.txt);;All files (*.*)"));
+
+    QFile file(fileName);
+    file.open(QIODevice::WriteOnly);
+    QTextStream out(&file);
+    out<<str;
+
+    //qDebug()<< "encrypt: "<<str;
+    //stdstr=cr->myCrypt(stdstr,"abababababababab","babababababababa",false);
+    //QString str1(stdstr.c_str());
+    //qDebug()<<"decrypt: "<<str1;
 
 
+}
+
+void MainContent::on_pushButton_2_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                    "/Users/nikitakurganov/Documents/Qt/Files",
+                                                    tr("Text files (*.txt);;All files (*.*)"));
+    QFile file(fileName);
+    file.open(QIODevice::ReadOnly);
+    QByteArray data;
+    data = file.readAll();
+    ui->textEdit->insertPlainText(QString(data));
 }
