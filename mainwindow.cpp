@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(this, SIGNAL(on_return()), ui->pushButton, SLOT(click()));
+
 }
 
 MainWindow::~MainWindow()

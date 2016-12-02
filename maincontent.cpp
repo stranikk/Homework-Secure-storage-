@@ -50,10 +50,8 @@ void MainContent::on_pushButton_clicked()
     QTextStream out(&file);
     out<<str;
 
-    //qDebug()<< "encrypt: "<<str;
-    //stdstr=cr->myCrypt(stdstr,"abababababababab","babababababababa",false);
-    //QString str1(stdstr.c_str());
-    //qDebug()<<"decrypt: "<<str1;
+   // qDebug()<< "encrypt: "<<str;
+
 
 
 }
@@ -67,5 +65,8 @@ void MainContent::on_pushButton_2_clicked()
     file.open(QIODevice::ReadOnly);
     QByteArray data;
     data = file.readAll();
-    ui->textEdit->insertPlainText(QString(data));
+    std::string stdstr=cr->myCrypt(QString(data).toStdString(),"abababababababab","babababababababa",false);
+    QString str1(stdstr.c_str());
+    //qDebug()<<"decrypt: "<<str1;
+    ui->textEdit->insertPlainText(str1);
 }

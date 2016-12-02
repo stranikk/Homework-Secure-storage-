@@ -32,3 +32,7 @@ FORMS    += mainwindow.ui \
     maincontent.ui \
     database.ui
 LIBS += /usr/local/lib/libbotan-1.11.33.33.dylib
+
+
+
+
