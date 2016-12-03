@@ -18,10 +18,11 @@ public:
 public slots:
     void on_pushButton_clicked();
     void connectDatabase();
-    void insertIntoTable(int id,QString Fname,QString LName,QString Login, QString Password);
+    void insertIntoTable(QString Fname,QString LName,QString Login, QString Password);
     bool checkLogPas(QString EntLog,QString EntPas);
     QString getFname(QString log);
     QString getLname(QString log);
+    bool checkLogin(QString log);
 
 
 private:
