@@ -33,11 +33,14 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString Log,Pas;
+    QString Log;
 
     Log=ui->lineEdit->text();
+
     if(db->checkLogPas(Log,str)==true){
+        log=Log;
         pContent = new MainContent();
+        pContent->setLogPas(log,str);
         pContent->show();
         pContent->setFnameLname(Log);
         this->hide();

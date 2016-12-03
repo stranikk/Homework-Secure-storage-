@@ -31,8 +31,6 @@ private slots:
 
     void on_lineEdit_2_textChanged(const QString &arg1);
 
-
-
     void on_lineEdit_2_returnPressed();
 
 private:
@@ -42,6 +40,7 @@ private:
     MainContent *pContent;
     QString str;
     bool sTextchanged = true;
+    QString log;
 
 };
 
