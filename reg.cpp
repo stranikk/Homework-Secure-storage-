@@ -32,7 +32,6 @@ void Reg::on_pushButton_clicked()
     }
     else{
     if(str==str1){
-        qDebug()<<"FPas: "<<str<<"LPas: "<<str1;
         db->insertIntoTable(fname,lname,log,QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex());
         this->hide();
     }

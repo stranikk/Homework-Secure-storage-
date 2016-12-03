@@ -35,6 +35,7 @@ void DataBase::on_pushButton_clicked()
    QString Lname = query.value(1).toString();
    QString Login = query.value(2).toString();
    QString Password = query.value(3).toString();
+   qDebug()<<"login: " <<Login <<"password: "<<Password;
    ui->textEdit->insertPlainText(Fname+" "+Lname+" "+Login+" "+Password+"\n");
    }
 }
@@ -53,21 +54,20 @@ void DataBase::connectDatabase()
 
 bool DataBase::checkLogPas(QString EntLog,QString EntPas)
 {
-    //int id;
-    QString login,password;
+    //QString login,password;
     connectDatabase();
     QSqlQuery query;
     query.exec("SELECT Firstname, LastName, Login, Password FROM Registration");
     QByteArray ba=EntPas.toUtf8();
-    while (query.next()){
-        login=query.value(2).toString();
-        password=query.value(3).toString();
+    while (query.next()){ //BAG UPDATE LOGIN AND PASS NEED FIX!!!
+        QString login=query.value(2).toString();
+        QString password=query.value(3).toString();
+
         if ((EntLog==login)&&((QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex())==password)){
+
             return true;
         }
-        else {
-            return false;
-        }
+
     }
 
 }

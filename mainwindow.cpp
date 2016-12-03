@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(this, SIGNAL(on_return()), ui->pushButton, SLOT(click()));
+    log.clear();
+    str.clear();
 
 }
 
@@ -48,6 +50,8 @@ void MainWindow::on_pushButton_clicked()
     else{
         ui->label_4->setText("Please check login or password");
     }
+    log.clear();
+    str.clear();
 }
 
 void MainWindow::on_lineEdit_2_textChanged(const QString &arg1)
