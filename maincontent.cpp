@@ -47,7 +47,6 @@ void MainContent::on_pushButton_clicked()
     QString text;
     text=ui->lineEdit->text();
 
-    //qDebug()<<
     std::string stdstr= cr->myCrypt(text.toStdString(),logToKey(getLog()).toStdString(),pasToKey(getPas()).toStdString(),true);
 
     QString str(stdstr.c_str());
@@ -60,11 +59,6 @@ void MainContent::on_pushButton_clicked()
     file.open(QIODevice::WriteOnly);
     QTextStream out(&file);
     out<<str;
-
-   // qDebug()<< "encrypt: "<<str;
-
-
-
 }
 
 QString MainContent::logToKey(QString log)
@@ -74,9 +68,9 @@ QString MainContent::logToKey(QString log)
     log=log.mid(0,16);
     for (int i{log.size()};i < 16;++i){
        log +="e";
-       qDebug() << log.replace(QRegularExpression("[g-zG-Z]"), "f");
+       log.replace(QRegularExpression("[g-zG-Z]"), "f");
     }
-    //log.to
+
 
     return log;
 }
@@ -88,9 +82,9 @@ QString MainContent::pasToKey(QString pas)
     pas=pas.mid(0,16);
     for (int i{pas.size()};i < 16;++i){
        pas +="e";
-       qDebug() << pas.replace(QRegularExpression("[g-zG-Z]"), "d");
+       pas.replace(QRegularExpression("[g-zG-Z]"), "d");
     }
-    //pas.to
+
 
     return pas;
 }
@@ -107,7 +101,6 @@ void MainContent::on_pushButton_2_clicked()
     data = file.readAll();
     std::string stdstr=cr->myCrypt(QString(data).toStdString(),logToKey(getLog()).toStdString(),pasToKey(getPas()).toStdString(),false);
     QString str1(stdstr.c_str());
-    //qDebug()<<"decrypt: "<<str1;
     ui->textEdit->insertPlainText(str1);
 }
 

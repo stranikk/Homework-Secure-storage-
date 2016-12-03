@@ -8,9 +8,6 @@ Crypt::Crypt()
     Botan::InitializationVector init;
 }
 
-
-
-
 std::string Crypt::myCrypt(std::string text, std::string log, std::string pas, bool mode)
 {
 
