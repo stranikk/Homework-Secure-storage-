@@ -22,11 +22,11 @@ void Reg::on_pushButton_clicked()
 {
     db->connectDatabase();
     QString log=ui->lineEdit->text();
-    //QString pas=ui->lineEdit_2->text();
-    //QString rpas=ui->lineEdit_3->text();
     QString fname=ui->lineEdit_4->text();
     QString lname=ui->lineEdit_5->text();
+    QString rpas=ui->lineEdit_3->text();
     QByteArray ba=str.toUtf8();
+    if ((log.size()!=0)&&(fname.size()!=0)&&(lname.size()!=0)&&(str.size()!=0)&&(rpas.size()!=0)){
     if((db->checkLogin(log))==true){
         ui->label_8->setText("This login at used");
     }
@@ -39,7 +39,19 @@ void Reg::on_pushButton_clicked()
     ui->label_7->setText("Check password");
     }
     }
-
+}
+    else{
+        if(str.size()==0)
+        ui->label_7->setText("Please enter password");
+        if(log.size()==0)
+        ui->label_8->setText("Please enter login");
+        if(rpas.size()==0)
+        ui->label_9->setText("Please enter repit password");
+        if(fname.size()==0)
+        ui->label_10->setText("Please enter firstname");
+        if(lname.size()==0)
+        ui->label_11->setText("Please enter lastname");
+    }
 }
 
 

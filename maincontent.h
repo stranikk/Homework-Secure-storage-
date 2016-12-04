@@ -7,6 +7,8 @@
 #include <QString>
 #include <QCryptographicHash>
 #include <QByteArray>
+#include <QFileDialog>
+#include <QFile>
 #include "database.h"
 #include "crypt.h"
 

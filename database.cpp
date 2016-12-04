@@ -35,7 +35,6 @@ void DataBase::on_pushButton_clicked()
    QString Lname = query.value(1).toString();
    QString Login = query.value(2).toString();
    QString Password = query.value(3).toString();
-   qDebug()<<"login: " <<Login <<"password: "<<Password;
    ui->textEdit->insertPlainText(Fname+" "+Lname+" "+Login+" "+Password+"\n");
    }
 }
@@ -45,6 +44,7 @@ void DataBase::connectDatabase()
     //Подключаем базу данных
    QSqlDatabase db;
    db = QSqlDatabase::addDatabase("QSQLITE");
+
    db.setDatabaseName("/Users/nikitakurganov/Documents/Qt/Data/Database.db3");
    if(!db.open()){
          qDebug() << "Не удалось восстановить базу данных";

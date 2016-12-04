@@ -11,8 +11,6 @@ Crypt::Crypt()
 std::string Crypt::myCrypt(std::string text, std::string log, std::string pas, bool mode)
 {
 
-
-        Botan::AutoSeeded_RNG rng;
         Botan::SymmetricKey key (log+pas);
         Botan::InitializationVector iv ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"); //initialis_vector must be 16*aa
         if(mode==true){

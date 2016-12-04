@@ -3,9 +3,7 @@
 #include "mainwindow.h"
 #include <QDebug>
 #include <string>
-#include <QFileDialog>
-#include <QFile>
-#include <QByteArray>
+
 
 MainContent::MainContent(QWidget *parent) :
     QDialog(parent),
