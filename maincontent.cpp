@@ -18,7 +18,8 @@ MainContent::~MainContent()
 {
     delete ui;
     delete cr;
-    delete db;
+    //несколько раз удаляешь один и тот же объект, как у тебя прога работает?
+    //delete db;
 }
 
 void MainContent::on_pushButton_3_clicked()
@@ -62,8 +63,10 @@ void MainContent::on_pushButton_clicked()
     QTextStream out(&file);
     out<<str;
     ui->lineEdit->clear();
+    file.close(); //ай ай ай
 }
 
+//опять повторяющийся код, тут не критично, но настоятельно рекомендую выносить в отдельные функции
 QString MainContent::logToKey(QString log)
 {
     QByteArray ba=log.toUtf8();
@@ -116,7 +119,7 @@ void MainContent::on_pushButton_2_clicked()
             catch(...){
                 qDebug() << "error with decode";
             }
-
+    file.close();
 }
 
 QString MainContent::getLog()
