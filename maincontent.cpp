@@ -17,11 +17,15 @@ MainContent::MainContent(QWidget *parent) :
 MainContent::~MainContent()
 {
     delete ui;
+    delete cr;
+    delete db;
 }
 
 void MainContent::on_pushButton_3_clicked()
 {
-    this->hide();
+    ui->textEdit->clear();
+    this->close();
+    emit firstWindow();
 }
 
 void MainContent::setFnameLname(QString log)
@@ -57,6 +61,7 @@ void MainContent::on_pushButton_clicked()
     file.open(QIODevice::WriteOnly);
     QTextStream out(&file);
     out<<str;
+    ui->lineEdit->clear();
 }
 
 QString MainContent::logToKey(QString log)
@@ -89,7 +94,6 @@ QString MainContent::pasToKey(QString pas)
 
 void MainContent::on_pushButton_2_clicked()
 {
-
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                     "/Users/nikitakurganov/Documents/Qt/Files",
                                                     tr("Text files (*.txt);;All files (*.*)"));
@@ -97,9 +101,22 @@ void MainContent::on_pushButton_2_clicked()
     file.open(QIODevice::ReadOnly);
     QByteArray data;
     data = file.readAll();
-    std::string stdstr=cr->myCrypt(QString(data).toStdString(),logToKey(getLog()).toStdString(),pasToKey(getPas()).toStdString(),false);
-    QString str1(stdstr.c_str());
-    ui->textEdit->insertPlainText(str1);
+
+    try{
+        if(!QString(data).isEmpty()){
+            std::string stdstr=cr->myCrypt(QString(data).toStdString(),logToKey(getLog()).toStdString(),pasToKey(getPas()).toStdString(),false);
+            QString str1(stdstr.c_str());
+            ui->textEdit->insertPlainText(str1);
+        }
+    }
+    catch(const std::exception &ex){
+                qDebug() << QString(ex.what());
+                ui->textEdit->insertPlainText("Error with decode!!!");
+            }
+            catch(...){
+                qDebug() << "error with decode";
+            }
+
 }
 
 QString MainContent::getLog()

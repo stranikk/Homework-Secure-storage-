@@ -9,7 +9,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
+    pContent = new MainContent();
+    sReg = new Reg();
+    connect(pContent, &MainContent::firstWindow, this, &MainWindow::show);
+    connect(sReg, &Reg::firstWindow, this, &Reg
+            ::show);
     connect(this, SIGNAL(on_return()), ui->pushButton, SLOT(click()));
     log.clear();
     str.clear();
@@ -19,12 +25,15 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete pContent;
+    delete db;
+    delete sReg;
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    sReg = new Reg();
     sReg->show();
+    this->close();
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -41,17 +50,20 @@ void MainWindow::on_pushButton_clicked()
 
     if(db->checkLogPas(Log,str)==true){
         log=Log;
-        pContent = new MainContent();
         pContent->setLogPas(log,str);
         pContent->show();
         pContent->setFnameLname(Log);
-        this->hide();
+        this->close();
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+
     }
     else{
         ui->label_4->setText("Please check login or password");
     }
     log.clear();
     str.clear();
+
 }
 
 void MainWindow::on_lineEdit_2_textChanged(const QString &arg1)

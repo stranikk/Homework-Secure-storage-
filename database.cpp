@@ -45,7 +45,11 @@ void DataBase::connectDatabase()
    QSqlDatabase db;
    db = QSqlDatabase::addDatabase("QSQLITE");
 
-   db.setDatabaseName("/Users/nikitakurganov/Documents/Qt/Data/Database.db3");
+
+   db.setDatabaseName("/Users/nikitakurganov/Documents/Qt/Homework/Data/Database.db3");
+
+
+
    if(!db.open()){
          qDebug() << "Не удалось восстановить базу данных";
    }

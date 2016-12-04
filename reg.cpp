@@ -33,7 +33,13 @@ void Reg::on_pushButton_clicked()
     else{
     if(str==str1){
         db->insertIntoTable(fname,lname,log,QCryptographicHash::hash(ba,QCryptographicHash::Sha256).toHex());
-        this->hide();
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+        ui->lineEdit_3->clear();
+        ui->lineEdit_4->clear();
+        ui->lineEdit_5->clear();
+        this->close();
+        emit firstWindow();
     }
     else{
     ui->label_7->setText("Check password");

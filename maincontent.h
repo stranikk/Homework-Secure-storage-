@@ -24,6 +24,9 @@ public:
     explicit MainContent(QWidget *parent = 0);
     ~MainContent();
     void setLogPas(QString log,QString pas);
+
+signals:
+   void firstWindow();
 public slots:
     void on_pushButton_3_clicked();
     void setFnameLname(QString log);

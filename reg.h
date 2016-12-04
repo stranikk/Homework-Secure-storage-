@@ -21,7 +21,8 @@ public:
     ~Reg();
 
 
-
+signals:
+    void firstWindow();
 private slots:
     void on_pushButton_clicked();
 
