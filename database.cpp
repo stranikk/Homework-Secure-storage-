@@ -44,12 +44,7 @@ void DataBase::connectDatabase()
     //Подключаем базу данных
    QSqlDatabase db;
    db = QSqlDatabase::addDatabase("QSQLITE");
-
-
    db.setDatabaseName("/Users/nikitakurganov/Documents/Qt/Homework/Data/Database.db3");
-
-
-
    if(!db.open()){
          qDebug() << "Не удалось восстановить базу данных";
    }
@@ -63,7 +58,7 @@ bool DataBase::checkLogPas(QString EntLog,QString EntPas)
     QSqlQuery query;
     query.exec("SELECT Firstname, LastName, Login, Password FROM Registration");
     QByteArray ba=EntPas.toUtf8();
-    while (query.next()){ //BAG UPDATE LOGIN AND PASS NEED FIX!!!
+    while (query.next()){
         QString login=query.value(2).toString();
         QString password=query.value(3).toString();
 

@@ -18,7 +18,6 @@ MainContent::~MainContent()
 {
     delete ui;
     delete cr;
-    delete db;
 }
 
 void MainContent::on_pushButton_3_clicked()
@@ -62,6 +61,8 @@ void MainContent::on_pushButton_clicked()
     QTextStream out(&file);
     out<<str;
     ui->lineEdit->clear();
+
+    file.close();
 }
 
 QString MainContent::logToKey(QString log)
@@ -116,6 +117,8 @@ void MainContent::on_pushButton_2_clicked()
             catch(...){
                 qDebug() << "error with decode";
             }
+
+    file.close();
 
 }
 

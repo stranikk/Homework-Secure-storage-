@@ -7,11 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>602</width>
-<<<<<<< HEAD
+
+
     <height>520</height>
-=======
+
     <height>425</height>
->>>>>>> origin/master
+
+
+    <height>520</height>
+
+    <height>425</height>
+
    </rect>
   </property>
   <property name="windowTitle">
