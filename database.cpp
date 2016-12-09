@@ -102,7 +102,7 @@ QString DataBase::getLname(QString log)
 
     }
 }
-
+//здесь почему-то входит в пользователя даже при неправильно введенном пароле. Думаю это связано с неправильной работой sql
 bool DataBase::checkLogin(QString log)
 {
     QString login;
