@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>754</width>
-    <height>426</height>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -248,9 +248,9 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>190</x>
      <y>370</y>
-     <width>311</width>
+     <width>151</width>
      <height>51</height>
     </rect>
    </property>
@@ -271,6 +271,19 @@
      <width>351</width>
      <height>151</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>370</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Encrypt file</string>
    </property>
   </widget>
  </widget>

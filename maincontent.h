@@ -39,6 +39,8 @@ private slots:
     QString getLog();
     QString getPas();
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainContent *ui;
     DataBase *db;

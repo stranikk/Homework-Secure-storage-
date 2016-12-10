@@ -131,3 +131,24 @@ QString MainContent::getPas()
 {
     return mainPas;
 }
+
+void MainContent::on_pushButton_4_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                    "/Users/nikitakurganov/Documents/Qt/Files",
+                                                    tr("Text files (*.txt);;All files (*.*)"));
+    QFile file(fileName);
+    file.open(QIODevice::ReadOnly);
+    QByteArray data;
+    data = file.readAll();
+    file.close();
+    if(!QString(data).isEmpty()){
+        std::string stdstr=cr->myCrypt(QString(data).toStdString(),logToKey(getLog()).toStdString(),pasToKey(getPas()).toStdString(),true);
+        QString str1(stdstr.c_str());
+        file.open(QIODevice::WriteOnly);
+        QTextStream out(&file);
+        out<<str1;
+        file.close();
+    }
+
+}
