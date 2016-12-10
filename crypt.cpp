@@ -11,7 +11,7 @@ Crypt::Crypt()
 std::string Crypt::myCrypt(std::string text, std::string log, std::string pas, bool mode)
 {
 
-        Botan::SymmetricKey key (log+pas);
+        Botan::SymmetricKey key (log+pas);//log=papa pas=mama equal to log=papam pas=ama
         Botan::InitializationVector iv ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"); //initialis_vector must be 16*aa
         if(mode==true){
             Botan::Pipe pipe(Botan::get_cipher("AES-128/CBC",key,iv,Botan::ENCRYPTION),new Botan::Hex_Encoder);

@@ -22,7 +22,7 @@ MainContent::~MainContent()
 
 void MainContent::on_pushButton_3_clicked()
 {
-    ui->textEdit->clear();
+    ui->textEdit->clear();//можно увидеть информацию предыдущего пользователя, записанную в lineEdit
     this->close();
     emit firstWindow();
 }

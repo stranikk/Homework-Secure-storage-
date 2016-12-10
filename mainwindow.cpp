@@ -31,7 +31,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    sReg->show();
+    sReg->show(); //отсутствует возможность вернуться к окну с входом
     this->close();
 }
 
@@ -44,8 +44,8 @@ void MainWindow::on_pushButton_clicked()
 {
     QString Log;
 
-    Log=ui->lineEdit->text();
-    qDebug()<<"Password: "<<str;
+    Log=ui->lineEdit->text(); //Тут может быть переполнение буфера
+    qDebug()<<"Password: "<<str; //тут можно посмотреть  пароль
     if((db->checkLogPas(Log,str)==true)&&(str!="")){
         log=Log;
         pContent->setLogPas(log,str);
