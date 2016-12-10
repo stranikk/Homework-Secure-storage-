@@ -45,7 +45,6 @@ void MainWindow::on_pushButton_clicked()
     QString Log;
 
     Log=ui->lineEdit->text();
-    qDebug()<<"Password: "<<str;
     if((db->checkLogPas(Log,str)==true)&&(str!="")){
         log=Log;
         pContent->setLogPas(log,str);
